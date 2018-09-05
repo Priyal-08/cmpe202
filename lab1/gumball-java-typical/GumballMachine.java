@@ -1,43 +1,28 @@
-
+import java.util.*;
 public class GumballMachine
 {
 
-    private int num_gumballs;
-    private boolean has_quarter;
-
-    public GumballMachine( int size )
+    protected int num_gumballs;
+    protected boolean has_enough_coin;
+    protected int min_amount;
+    protected int has_total_amount;
+    protected ArrayList<Integer> acceptedCoins;
+    public GumballMachine(int size, int min_amount, ArrayList<Integer> acceptedCoins)
     {
         // initialise instance variables
         this.num_gumballs = size;
-        this.has_quarter = false;
+        this.has_enough_coin = false;
+        this.min_amount = min_amount;
+        this.has_total_amount = 0;
+        this.acceptedCoins = new ArrayList<Integer>(acceptedCoins);
     }
 
-    public void insertQuarter(int coin)
-    {
-        if ( coin == 25 )
-            this.has_quarter = true ;
-        else 
-            this.has_quarter = false ;
-    }
+    public void insertCoin(int coin) {}
     
-    public void turnCrank()
+    public void turnCrank() {}
+    
+    public String toString()
     {
-    	if ( this.has_quarter )
-    	{
-    		if ( this.num_gumballs > 0 )
-    		{
-    			this.num_gumballs-- ;
-    			this.has_quarter = false ;
-    			System.out.println( "Thanks for your quarter.  Gumball Ejected!" ) ;
-    		}
-    		else
-    		{
-    			System.out.println( "No More Gumballs!  Sorry, can't return your quarter." ) ;
-    		}
-    	}
-    	else 
-    	{
-    		System.out.println( "Please insert a quarter" ) ;
-    	}        
+        return String.format("Gumball machine has : " + this.num_gumballs + " gumballs. Cost of each gumball : " + min_amount + " cents. Amount inserted: " + has_total_amount);
     }
 }

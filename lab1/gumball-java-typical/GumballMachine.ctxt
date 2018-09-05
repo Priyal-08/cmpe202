@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=GumballMachine
+comment1.params=size\ min_amount\ acceptedCoins
+comment1.target=GumballMachine(int,\ int,\ java.util.ArrayList)
+comment2.params=coin
+comment2.target=void\ insertCoin(int)
+comment3.params=
+comment3.target=void\ turnCrank()
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5

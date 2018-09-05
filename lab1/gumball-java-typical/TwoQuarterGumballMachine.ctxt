@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=TwoQuarterGumballMachine
+comment1.params=size
+comment1.target=TwoQuarterGumballMachine(int)
+comment2.params=coin
+comment2.target=void\ insertCoin(int)
+comment3.params=coin
+comment3.target=void\ ejectInvalidCoin(int)
+comment4.params=
+comment4.target=void\ turnCrank()
+comment5.params=
+comment5.target=void\ ejectCoin()
+numComments=6
