@@ -12,8 +12,8 @@ public class TwoQuarterGumballMachine extends GumballMachine
         System.out.println("Inserted Coin : " + coin);
         if(acceptedCoins.contains(coin))
         {
-            has_total_amount += coin;
-            if(has_total_amount == min_amount)
+            has_balance_amount += coin;
+            if(has_balance_amount == min_amount)
             {
                 has_enough_coin = true;
             }
@@ -39,21 +39,21 @@ public class TwoQuarterGumballMachine extends GumballMachine
             {
                 num_gumballs--;
                 has_enough_coin = false;
-                has_total_amount -= min_amount;
+                has_balance_amount -= min_amount;
                 System.out.println( "Thanks for your quarter.  Gumball Ejected!" ) ;
             }
             else
             {
                 System.out.println( "No More Gumballs!" ) ;
                 ejectCoin();
-                has_total_amount -= min_amount;
+                has_balance_amount -= min_amount;
                 has_enough_coin = false;
             }
             
         }
         else
         {
-            System.out.println("Insufficient funds. Total inserted amount : " + has_total_amount + ", required amount: " + min_amount + ". Please insert " + (min_amount - has_total_amount) + " amount.") ;
+            System.out.println("Insufficient funds. Total inserted amount : " + has_balance_amount + ", required amount: " + min_amount + ". Please insert " + (min_amount - has_balance_amount) + " amount.") ;
         }
         
     }

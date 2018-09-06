@@ -12,14 +12,14 @@ public class AnyCoinGumballMachine extends GumballMachine
         System.out.println("Inserted Coin : " + coin);
         if(acceptedCoins.contains(coin))
         {
-            has_total_amount += coin;
-            if(has_total_amount >= min_amount)
+            has_balance_amount += coin;
+            if(has_balance_amount >= min_amount)
             {
                 has_enough_coin = true;
-                if(has_total_amount > min_amount)
+                if(has_balance_amount > min_amount)
                 {
-                    int extra_amount = has_total_amount - min_amount;
-                    has_total_amount -= extra_amount;
+                    int extra_amount = has_balance_amount - min_amount;
+                    has_balance_amount -= extra_amount;
                     ejectCoin(extra_amount);
                 }
             }
@@ -45,21 +45,21 @@ public class AnyCoinGumballMachine extends GumballMachine
             {
                 num_gumballs--;
                 has_enough_coin = false;
-                has_total_amount -= min_amount;
+                has_balance_amount -= min_amount;
                 System.out.println( "Thanks for your quarter.  Gumball Ejected!" ) ;
             }
             else
             {
                 System.out.println( "No More Gumballs!" ) ;
                 ejectCoin(min_amount);
-                has_total_amount -= min_amount;
+                has_balance_amount -= min_amount;
                 has_enough_coin = false;
             }
             
         }
         else
         {
-            System.out.println("Insufficient funds. Total inserted amount : " + has_total_amount + ", required amount: " + min_amount + ". Please insert " + (min_amount - has_total_amount) + " amount.") ;
+            System.out.println("Insufficient funds. Total inserted amount : " + has_balance_amount + ", required amount: " + min_amount + ". Please insert " + (min_amount - has_balance_amount) + " amount.") ;
         }
         
     }
