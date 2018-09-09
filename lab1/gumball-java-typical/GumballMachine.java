@@ -17,9 +17,62 @@ public class GumballMachine
         this.acceptedCoins = new ArrayList<Integer>(acceptedCoins);
     }
 
-    public void insertCoin(int coin) {}
+    public void insertCoin(int coin) {
+        System.out.println("Inserted Coin : " + coin);
+        if(!has_enough_coin)
+        {
+            if(acceptedCoins.contains(coin))
+            {
+                has_balance_amount += coin;
+                if(has_balance_amount >= min_amount)
+                {
+                    has_enough_coin = true;
+                }
+            }
+            else
+            {
+                System.out.println("Invalid Coin. Please collect your coin: " + coin + " cents");
+            }
+        }
+        else
+        {
+            System.out.println("You can not insert another coin.");
+        }
+    }
     
-    public void turnCrank() {}
+    public void turnCrank() {
+        System.out.println("Crank Turned");
+        if(has_enough_coin)
+        {
+            if(num_gumballs > 0)
+            {
+                num_gumballs--;
+                has_enough_coin = false;
+                has_balance_amount -= min_amount;
+                System.out.println( "Thanks for your coin.  Gumball Ejected!" ) ;
+                if(has_balance_amount>0)
+                {
+                    System.out.println("Please collect the balance amount: " + has_balance_amount + " cents");
+                    has_balance_amount = 0;
+                }
+            }
+            else
+            {
+		System.out.println( "No More Gumballs!" ) ;
+		ejectCoin();
+		has_balance_amount = 0;
+		has_enough_coin = false;
+            }
+        }
+        else
+        {
+            System.out.println( "Please pay " + min_amount + " cents first. Total paid: " + has_balance_amount + " cents, Remaining: " + (min_amount - has_balance_amount) + " cents" ) ;
+        }
+    }
+    
+    public void ejectCoin() {
+        System.out.println("Please collect your coin(s): " + has_balance_amount + " cents");
+    }
     
     public String toString()
     {
