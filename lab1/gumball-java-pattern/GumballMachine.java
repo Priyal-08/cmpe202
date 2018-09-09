@@ -15,11 +15,11 @@ public class GumballMachine {
     State soldState;
     State state = soldOutState;
     
-    int count = 0;
-    int minAmount;
-    int hasBalanceAmount;
-    ArrayList<Integer> acceptedCoins;
-    MachineModel machineModel;
+    private int count = 0;
+    private int minAmount;
+    private int hasBalanceAmount;
+    private ArrayList<Integer> acceptedCoins;
+    private MachineModel machineModel;
     
     public GumballMachine(int numberGumballs, MachineModel model) {
         soldOutState = new SoldOutState(this);
