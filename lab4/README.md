@@ -12,6 +12,7 @@
 
 	
 2. Design Patterns Used:
+
 	1. State Pattern: I have used state pattern for table state. The state of table can be "Booked" or "Available".
 	
-	2.  Observer Pattern: I my design TableManager notifies the WaitListManager(observer) if the table state changes. 
+	2. Observer Pattern: In this TableManager notifies the WaitListManager(observer), if the table state changes. 
