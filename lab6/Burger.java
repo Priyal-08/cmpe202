@@ -33,11 +33,31 @@ public class Burger implements IItem
         displayBurger.append("\t\t");
         displayBurger.append(price);
         displayBurger.append("\n");
+        StringBuffer topBunComponents = new StringBuffer();
+        StringBuffer bottomBunComponents = new StringBuffer();
+        StringBuffer onMeatComponents = new StringBuffer();
         for(IComponent c: components){
-            displayBurger.append("   ");
-            displayBurger.append(c.print());
-            displayBurger.append("\n");
+            switch(c.getPlacement()){
+                case TOPBUN:
+                    topBunComponents.append("   ");
+                    topBunComponents.append(c.print());
+                    topBunComponents.append("\n");
+                    break;
+                case BOTTOMBUN:
+                    bottomBunComponents.append("   ");
+                    bottomBunComponents.append(c.print());
+                    bottomBunComponents.append("\n");
+                    break;
+                case ONMEAT:
+                    onMeatComponents.append("   ");
+                    onMeatComponents.append(c.print());
+                    onMeatComponents.append("\n");
+                    break;
+                }
         }
+        displayBurger.append(topBunComponents);
+        displayBurger.append(onMeatComponents);
+        displayBurger.append(bottomBunComponents);
         return displayBurger.toString();
     }
     

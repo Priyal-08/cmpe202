@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 /**
  * Five Guys Menu Items
  *
@@ -10,10 +11,12 @@ public class Order
    private int orderNumber;
    private ArrayList<IItem> items = new ArrayList<IItem>();
    private double total;
+   private String date;
     public Order(int orderNo)
     {
         orderNumber = orderNo;
         total = 0;
+        date = (new Date()).toString();
     }
     
     /**
@@ -22,6 +25,14 @@ public class Order
      */
     public int getOrderNumber(){
         return this.orderNumber;
+    }
+    
+    /**
+     * Get the order date
+     * @return order date
+     */
+    public String getOrderDate(){
+        return this.date;
     }
     
     /**

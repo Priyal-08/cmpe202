@@ -9,7 +9,8 @@ public interface IReceiptStrategy
 {
     /**
      * Return receipt contents
+     * @param Order to print receipt for
      * @return receipt contents
      */
-    String print();
+    String print(Order order);
 }

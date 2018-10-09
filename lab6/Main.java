@@ -19,6 +19,8 @@ public class Main
      */
     public static void run()
     {
+        IReceiptStrategy billReceipt = new BillReceipt();
+        IReceiptStrategy packingReceipt = new PackingReceipt();
         Toppings tomato = new Toppings("TOMATO",Placement.TOPBUN);
         Toppings lettuce = new Toppings("LETTUCE",Placement.TOPBUN);
         Toppings gOnion = new Toppings("G ONION",Placement.ONMEAT);
@@ -30,6 +32,7 @@ public class Main
         burger.addComponent(gOnion);
         burger.addComponent(jGrilled);
         order.addItem(burger);
-        System.out.println(order.print());
+        System.out.println(billReceipt.print(order));
+        System.out.println(packingReceipt.print(order));
     }
 }

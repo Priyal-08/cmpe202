@@ -12,4 +12,10 @@ public interface IComponent
      * @return component contents
      */
     String print();
+    
+    /**
+     * Return component's placement
+     * @return component placement
+     */
+    Placement getPlacement();
 }

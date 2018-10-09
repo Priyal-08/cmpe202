@@ -25,4 +25,12 @@ public class Toppings implements IComponent
             return description;
         }
     }
+    
+    /**
+     * Return component's placement
+     * @return component placment
+     */
+    public Placement getPlacement(){
+        return place;
+    }
 }

@@ -17,9 +17,20 @@ public class PackingReceipt implements IReceiptStrategy
     }
     /**
      * Return receipt contents
+     * @param Order to print packing receipt for
      * @return receipt contents
      */
-    public String print(){
-        return "";
+    public String print(Order order){
+        StringBuffer packingReceipt = new StringBuffer();
+        packingReceipt.append("\n----------------------------------------\n");
+        packingReceipt.append("Patties - 1\n");
+        packingReceipt.append("Order Number: ");
+        packingReceipt.append(order.getOrderNumber());
+        packingReceipt.append("\n       ");
+        packingReceipt.append(order.getOrderDate());
+        packingReceipt.append("\n        FIVE GUYS\n");
+        packingReceipt.append(order.print());
+        packingReceipt.append("\n----------------------------------------\n");
+        return packingReceipt.toString();
     }
 }
