@@ -19,9 +19,4 @@ public interface IItem
      */
     double getPrice();
     
-    /**
-     * Add components to item
-     * @param component
-     */
-    void addComponent(IComponent c);
 }

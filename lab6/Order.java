@@ -67,9 +67,6 @@ public class Order
             displayOrder.append(item.print());
             displayOrder.append("\n");
         }
-        displayOrder.append("Sub. Total:");
-        displayOrder.append("\t\t");
-        displayOrder.append(getOrderTotal());
         return displayOrder.toString();
     }
     

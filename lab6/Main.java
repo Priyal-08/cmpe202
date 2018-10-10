@@ -21,17 +21,27 @@ public class Main
     {
         IReceiptStrategy billReceipt = new BillReceipt();
         IReceiptStrategy packingReceipt = new PackingReceipt();
-        Toppings tomato = new Toppings("TOMATO",Placement.TOPBUN);
+        Order order = new Order(++orderNo);
+        
+        //Burger
+        Burger burger = new Burger("LBB", 1);
         Toppings lettuce = new Toppings("LETTUCE",Placement.TOPBUN);
+        Toppings tomato = new Toppings("TOMATO",Placement.TOPBUN);
         Toppings gOnion = new Toppings("G ONION",Placement.ONMEAT);
         Toppings jGrilled = new Toppings("JALA Grilled",Placement.ONMEAT);
-        Order order = new Order(++orderNo);
-        IItem burger = new Burger("LBB", 5.59, 1);
-        burger.addComponent(tomato);
         burger.addComponent(lettuce);
+        burger.addComponent(tomato);
         burger.addComponent(gOnion);
         burger.addComponent(jGrilled);
+        
+        //Fries
+        Fries fries = new Fries("CAJ", 1, 1);
+        
+        //Add burger to order
         order.addItem(burger);
+        //Add fries to order
+        order.addItem(fries);
+        
         System.out.println(billReceipt.print(order));
         System.out.println(packingReceipt.print(order));
     }
