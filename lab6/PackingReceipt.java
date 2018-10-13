@@ -20,13 +20,10 @@ public class PackingReceipt implements IReceiptStrategy
      * @param Order to print packing receipt for
      * @return receipt contents
      */
-    public String print(Order order){
-        StringBuffer packingReceipt = new StringBuffer();
-        packingReceipt.append("\n----------------------------------------\n");
-        packingReceipt.append(order.getOrderDate());
-        packingReceipt.append("\n");
-        packingReceipt.append(order.print());
-        packingReceipt.append("\n----------------------------------------\n");
-        return packingReceipt.toString();
+    public void printDescription(Order order){
+        System.out.println("\nPacking Receipt\n");
+        System.out.println("-------------------------------------");
+        System.out.println(order.printDescription());
+        System.out.println("-------------------------------------");
     }
 }

@@ -1,31 +1,19 @@
-import java.util.ArrayList;
+
 import java.text.DecimalFormat;
-/**
- * Five Guys Menu Items-Burger
- *
- * @author Priyal Agrawal
- * @version 1.0
- */
-public class Burger implements IItem
+
+public class Burger extends Composite
 {
-    private ArrayList<IComponent> components = new ArrayList<IComponent>();
     private double price;
-    private String description;
     private int quantity;
-    private boolean bacon;
-    /**
-     * Constructor for objects of class Burger
-     */
-    public Burger(String description, int quantity)
+    public Burger ( String d, int quantity )
     {
-        this.description = description;
+        super(d) ;
         this.quantity = quantity;
-        this.bacon = false;
-        this.setDetails();
+        setDetails();
     }
     
     private void setDetails(){
-        switch(this.description){
+        switch(description){
             case"HB":
                 this.price = 6.39;
                 break;
@@ -34,11 +22,9 @@ public class Burger implements IItem
                 break;
             case"BB":
                 this.price = 7.19;
-                this.bacon = true;
                 break;
             case"BCB":
                 this.price = 7.79;
-                this.bacon = true;
                 break;
             case"LHB":
                 this.price = 4.59;
@@ -48,71 +34,44 @@ public class Burger implements IItem
                 break;
             case"LBB":
                 this.price = 5.59;
-                this.bacon = true;
                 break;
             case"LBCB":
                 this.price = 6.19;
-                this.bacon = true;
                 break;
             default:
                 this.price = 0.00;
         }
     }
-    /**
-     * Return burger contents
-     * @return burger contents
-     */
-    public String print() {
-        StringBuffer displayBurger = new StringBuffer();
-        displayBurger.append(quantity);
-        displayBurger.append(" ");
-        displayBurger.append(description);
-        displayBurger.append("\t\t");
+    @Override
+    public String printDescription() {
         DecimalFormat fmt = new DecimalFormat("0.00");
-        displayBurger.append(fmt.format(getPrice()));
-        displayBurger.append("\n");
-        if(this.bacon) {
-            displayBurger.append("  ");
-            displayBurger.append("{{{{BACON}}}}");
-            displayBurger.append("\n");
-        }
+        String printDesc = "\n " + quantity + " " + description + " " + fmt.format(getPrice()) + "\n";
         StringBuffer topBunComponents = new StringBuffer();
         StringBuffer bottomBunComponents = new StringBuffer();
         StringBuffer onMeatComponents = new StringBuffer();
-        for(IComponent c: components){
-            switch(c.getPlacement()){
-                case TOPBUN:
-                    topBunComponents.append("   ");
-                    topBunComponents.append(c.print());
-                    topBunComponents.append("\n");
-                    break;
-                case BOTTOMBUN:
-                    bottomBunComponents.append("   ");
-                    bottomBunComponents.append(c.print());
-                    bottomBunComponents.append("\n");
-                    break;
-                case ONMEAT:
-                    onMeatComponents.append("   ");
-                    onMeatComponents.append(c.print());
-                    onMeatComponents.append("\n");
-                    break;
-                }
+        for (Component obj  : components)
+        {
+            if(obj.getPlacement() == Placement.TOPBUN)
+                topBunComponents.append("  " + obj.printDescription() + "\n");
+            else if(obj.getPlacement() == Placement.ONMEAT)
+                onMeatComponents.append("  " + obj.printDescription() + "\n");
+            else
+                bottomBunComponents.append("  " + obj.printDescription() + "\n");
         }
-        displayBurger.append(topBunComponents);
-        displayBurger.append(onMeatComponents);
-        displayBurger.append(bottomBunComponents);
-        return displayBurger.toString();
+        printDesc += topBunComponents.toString();
+        printDesc += onMeatComponents.toString();
+        printDesc += bottomBunComponents.toString();
+        return printDesc;
     }
     
     /**
      * Return burger price
      * @return burger price
      */
-    public double getPrice(){
-        return this.price * this.quantity;
-    }
-    
-    public void addComponent(IComponent c){
-        components.add(c);
+    @Override
+    public double getPrice() {
+        return this.quantity*this.price;
     }
 }
+
+       

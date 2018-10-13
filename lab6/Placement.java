@@ -1,4 +1,3 @@
-
 /**
  * Enumeration class Placement - for the toppings placement in burger
  *

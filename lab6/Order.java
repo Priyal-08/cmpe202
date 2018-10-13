@@ -1,73 +1,43 @@
-import java.util.ArrayList;
-import java.util.Date;
+
+import java.text.DecimalFormat;
 /**
- * Five Guys Menu Items
+ * Order
  *
  * @author Priyal Agrawal
  * @version 1.0
  */
-public class Order
+public class Order extends Composite
 {
-   private int orderNumber;
-   private ArrayList<IItem> items = new ArrayList<IItem>();
-   private double total;
-   private String date;
-    public Order(int orderNo)
+    private double total;
+    private int orderNo;
+    public Order ( int orderNo)
     {
-        orderNumber = orderNo;
-        total = 0;
-        date = (new Date()).toString();
+        super("Order Number") ;
+        this.orderNo = orderNo;
+    }
+    
+    @Override
+    public String printDescription() {
+        String printDesc = "Order Number: " + this.orderNo;
+        for (Component obj  : components)
+        {
+            printDesc += "\n" + obj.printDescription();
+        }
+        return printDesc;
     }
     
     /**
-     * Get the order number
-     * @return order number
+     * Return Order total
+     * @return order total
      */
-    public int getOrderNumber(){
-        return this.orderNumber;
-    }
-    
-    /**
-     * Get the order date
-     * @return order date
-     */
-    public String getOrderDate(){
-        return this.date;
-    }
-    
-    /**
-     * Get the order number
-     * @param ordered item
-     */
-    public void addItem(IItem item){
-        this.items.add(item);
-    }
-    
-    /**
-     * Get the order number
-     * @return order number
-     */
-    public double getOrderTotal(){
-        for(IItem item: items){
-            this.total += item.getPrice();
+    @Override
+    public double getPrice() {
+        for (Component obj : components)
+        {
+            this.total += obj.getPrice();
         }
         return this.total;
     }
-    
-    /**
-     * Print Order
-     * @return order contents
-     */
-    public String print(){
-        StringBuffer displayOrder = new StringBuffer();
-        displayOrder.append("Order Number: ");
-        displayOrder.append(orderNumber);
-        displayOrder.append("\n");
-        for(IItem item: items){
-            displayOrder.append(item.print());
-            displayOrder.append("\n");
-        }
-        return displayOrder.toString();
-    }
-    
 }
+
+       

@@ -1,35 +1,34 @@
 
 /**
- * Burger components
+ * Burger components - Toppings
  * 
  * @author Priyal Agrawal
  * @version 1.0
  */
-public class Toppings implements IComponent
+public class Toppings extends Leaf
 {
-    private String description;
     private Placement place;
-    
     public Toppings(String description, Placement place) {
-        this.description = description;
+        super(description);
         this.place = place;
     }
     /**
      * Return component's contents
      * @return component contents
      */
-    public String print(){
+    @Override
+    public String printDescription() {
         if(place == Placement.ONMEAT){
-            return "->|" + description;
+            return "  ->|" + description;
         } else {
-            return description;
+            return "  " + description;
         }
     }
-    
     /**
      * Return component's placement
      * @return component placment
      */
+    @Override
     public Placement getPlacement(){
         return place;
     }

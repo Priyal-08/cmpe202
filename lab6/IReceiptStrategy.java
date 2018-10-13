@@ -1,4 +1,3 @@
-
 /**
  * Receipt strategy
  *
@@ -9,8 +8,8 @@ public interface IReceiptStrategy
 {
     /**
      * Return receipt contents
-     * @param Order to print receipt for
+     * @Component to be printed
      * @return receipt contents
      */
-    String print(Order order);
+    void printDescription(Order order);
 }
