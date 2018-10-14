@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 import java.text.DecimalFormat;
 /**
  * Order
@@ -16,16 +16,6 @@ public class Order extends Composite
         this.orderNo = orderNo;
     }
     
-    @Override
-    public String printDescription() {
-        String printDesc = "Order Number: " + this.orderNo;
-        for (Component obj  : components)
-        {
-            printDesc += "\n" + obj.printDescription();
-        }
-        return printDesc;
-    }
-    
     /**
      * Return Order total
      * @return order total
@@ -37,6 +27,22 @@ public class Order extends Composite
             this.total += obj.getPrice();
         }
         return this.total;
+    }
+    
+    /**
+     * Return order number
+     * @return order number
+     */
+    public int getOrderNumber() {
+        return this.orderNo;
+    }
+    
+    /**
+     * Return order items
+     * @return order items
+     */
+    public ArrayList<Component> getOrderItems() {
+        return components;
     }
 }
 

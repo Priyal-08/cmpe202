@@ -38,16 +38,24 @@ public class Fries extends Leaf
     }
     
     /**
-     * Return component's contents
-     * @return component contents
+     * Return fries description with price
+     * @return fries description
      */
-    @Override
-    public String printDescription() {
+    public String printPriceDescription() {
         DecimalFormat fmt = new DecimalFormat("0.00");
-        String printDesc = "\n " + quantity + " " + description + " " + fmt.format(getPrice());
+        String printDesc = "\n" + quantity + " " + description + "    		 " + fmt.format(getPrice());
         return printDesc;
     }
     
+    /**
+     * Return fries description
+     * @return fries description
+     */
+    @Override
+    public String printDescription() {
+        String printDesc = "\n" + quantity + " " + description;
+        return printDesc;
+    }
     /**
      * Return fries' price
      * @return fries' price

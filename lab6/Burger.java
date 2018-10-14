@@ -42,21 +42,32 @@ public class Burger extends Composite
                 this.price = 0.00;
         }
     }
+    
+    public String printPriceDescription() {
+        DecimalFormat fmt = new DecimalFormat("0.00");
+        String printDesc = "\n" + quantity + " " + description + "        		 " + fmt.format(getPrice());
+        for (Component obj : components)
+        {
+            printDesc += "\n  " + obj.printDescription();
+        }
+        return printDesc;
+    }
+    
     @Override
     public String printDescription() {
-        DecimalFormat fmt = new DecimalFormat("0.00");
-        String printDesc = "\n " + quantity + " " + description + " " + fmt.format(getPrice()) + "\n";
+        String printDesc = "\n" + quantity + " " + description;
         StringBuffer topBunComponents = new StringBuffer();
         StringBuffer bottomBunComponents = new StringBuffer();
         StringBuffer onMeatComponents = new StringBuffer();
-        for (Component obj  : components)
+        for (int i=0; i<components.size(); i++)
         {
+            Toppings obj = (Toppings)components.get(i);
             if(obj.getPlacement() == Placement.TOPBUN)
-                topBunComponents.append("  " + obj.printDescription() + "\n");
+                topBunComponents.append("\n  " + obj.printDescription());
             else if(obj.getPlacement() == Placement.ONMEAT)
-                onMeatComponents.append("  " + obj.printDescription() + "\n");
+                onMeatComponents.append("\n  " + obj.printDescription());
             else
-                bottomBunComponents.append("  " + obj.printDescription() + "\n");
+                bottomBunComponents.append("\n  " + obj.printDescription());
         }
         printDesc += topBunComponents.toString();
         printDesc += onMeatComponents.toString();

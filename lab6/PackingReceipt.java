@@ -23,7 +23,10 @@ public class PackingReceipt implements IReceiptStrategy
     public void printDescription(Order order){
         System.out.println("\nPacking Receipt\n");
         System.out.println("-------------------------------------");
-        System.out.println(order.printDescription());
+        System.out.println("Order Number = " + order.getOrderNumber());
+        for(Component item : order.getOrderItems()) {
+            System.out.println(item.printDescription());
+        }
         System.out.println("-------------------------------------");
     }
 }
