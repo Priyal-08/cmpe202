@@ -28,7 +28,7 @@ public class CreditCardNum implements IDisplayComponent, IKeyEventHandler
 				deleteSubComponent();
 			}
 			else {
-				if(cnt==5 || cnt ==9 || cnt == 13) {
+				if(cnt%4==1 && cnt!=1) {
 					Digit digit = new Digit(ch);
 					digit.wrapDecorator(new Digit(" "));
 					addSubComponent(digit);

@@ -39,12 +39,15 @@ public class App {
     }
 
     public void key(String ch) {
-    	if(ch.matches("1|2|3|4|5|6|7|8|9"))
+    	if(ch.matches("1|2|3|4|5|6|7|8|9|0")) {
     		count += count>=23?0:1;
+    		screen.key(ch, count);
+    	}
     	System.out.println("\nCount = " + count);
-        screen.key(ch, count);
-        if(ch.matches("x|X") && count>0)
-    		count--;
+        if(ch.matches("x|X") && count>0) {
+        	screen.key(ch, count);
+        	count--;
+        }
     }
 
 }
