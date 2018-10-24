@@ -17,6 +17,9 @@ public class App {
         num = new CreditCardNum();
         exp = new CreditCardExp();
         cvc = new CreditCardCVC();
+        
+        num.wrapDecorator(new CardNumberDecorator());
+        exp.wrapDecorator(new DateDecorator());
 
         screen.addSubComponent(num);
         screen.addSubComponent(exp);
