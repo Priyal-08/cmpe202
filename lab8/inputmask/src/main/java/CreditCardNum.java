@@ -24,7 +24,7 @@ public class CreditCardNum implements IDisplayComponent, IKeyEventHandler
 
 	public void key(String ch, int cnt) {
 		if ( cnt <= 16 ) {
-			if(ch.matches("x|X") && number.length()>0) {
+			if(ch.toUpperCase().matches("X|DELETE") && number.length()>0) {
 				number = number.substring(0, number.length()-1);
 			}
 			else {

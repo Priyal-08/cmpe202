@@ -47,7 +47,7 @@ public class App {
     		screen.key(ch, count);
     	}
     	System.out.println("\nCount = " + count);
-        if(ch.matches("x|X") && count>0) {
+        if(ch.toUpperCase().matches("X|DELETE") && count>0) {
         	screen.key(ch, count);
         	count--;
         }
